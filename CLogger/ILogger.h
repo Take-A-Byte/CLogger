@@ -19,6 +19,9 @@ namespace Logger
 		virtual ~ILogger() = default;
 
 		virtual void set_SeverityLevel(LogSeverity severity) = 0;
+		virtual void set_printLogSeverity(bool printLogSeverity) = 0;
 		virtual void Log(LogSeverity severity, std::string message) = 0;
+
+		virtual void Flush(std::string logMessage) = 0;
 	};
 }

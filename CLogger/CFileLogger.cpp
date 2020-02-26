@@ -7,12 +7,12 @@
 
 using namespace Logger;
 
-CFileLogger::CFileLogger(std::string loggerName, LogSeverity severity, std::string savePath)
+CFileLogger::CFileLogger(std::string loggerName, LogSeverity severity, std::string savePath): CLoggerBase(loggerName, severity)
 {
-	m_loggerName = loggerName;
+	m_logFilePath = savePath;
 
 	int check = _mkdir(savePath.c_str());
-	m_logFilePath = savePath + '/' + m_loggerName + ".txt";
+	m_logFilePath = savePath + '/' + loggerName + ".txt";
 	
 	std::ofstream logFile(m_logFilePath);
 }
@@ -22,29 +22,12 @@ CFileLogger::~CFileLogger()
 
 }
 
-
-void CFileLogger::set_SeverityLevel(LogSeverity severity)
+void CFileLogger::Flush(std::string logMessage)
 {
-
-}
-
-void CFileLogger::Log(LogSeverity severity, std::string message)
-{
-	std::stringstream log;
-
-	// current date/time based on current system
-	time_t now = time(0);
-	tm *ltm = localtime(&now);
-	log << '[' << ltm->tm_hour << ':' << ltm->tm_min << ':' << ltm->tm_sec << "]  ";
-
-	log << m_loggerName << ": ";
-	log << message << std::endl;
-
 	std::ofstream logFile;
 	logFile.open(m_logFilePath, std::ios::out | std::ios::app);
 	if (logFile.is_open())
 	{
-		logFile << log.str() << std::endl;
+		logFile << logMessage;
 	}
-
 }

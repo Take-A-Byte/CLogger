@@ -69,6 +69,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CFileLogger.h" />
+    <ClInclude Include="CLoggerBase.h" />
     <ClInclude Include="CLoggerFactory.h" />
     <ClInclude Include="CLoggerUtilities.h" />
     <ClInclude Include="ILogger.h" />
@@ -78,6 +79,7 @@
     <ClCompile Include="CFileLogger.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="CLoggerBase.cpp" />
     <ClCompile Include="CLoggerFactory.cpp" />
     <ClCompile Include="CLoggerUtilities.cpp" />
     <ClCompile Include="main.cpp" />
