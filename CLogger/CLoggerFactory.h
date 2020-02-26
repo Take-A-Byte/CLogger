@@ -15,7 +15,7 @@ namespace Logger
 						 By default, the log file will be saved in the Log folder
 						 with the name of logger
 		*/
-		static ILogger* CreateLogger(std::string loggerName, LogSeverity loggerSeverity = LogSeverity::Trace, std::string savePath = "\\Log\\");
+		static ILogger* CreateLogger(std::string loggerName, LogSeverity loggerSeverity = LogSeverity::Trace, std::string savePath = "./Log");
 
 	private:
 		CLoggerFactory();

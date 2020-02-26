@@ -1,5 +1,7 @@
 #pragma once
-#include<iostream>
+#include<ctime>
+#include<string>
+#include<sstream>
 
 #ifdef CLoggerDLL
 #define CLoggerAPI __declspec(dllexport)

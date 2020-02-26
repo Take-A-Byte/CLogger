@@ -16,11 +16,11 @@
     <Filter Include="Interfaces">
       <UniqueIdentifier>{91ff3414-5715-4197-83d6-c3a4f4f03be2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{194f207e-af06-4fbf-9b69-ce6d8a51cfca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CLogger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ILogger.h">
       <Filter>Interfaces</Filter>
     </ClInclude>
@@ -28,14 +28,26 @@
     <ClInclude Include="CLoggerFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CFileLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoggerUtilities.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CLogger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="CLoggerFactory.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoggerUtilities.cpp">
+      <Filter>Utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
