@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "CLoggerBase.h"
+#include "CLoggerUtilities.h"
 
 using namespace Logger;
 
@@ -31,7 +32,12 @@ void CLoggerBase::Log(LogSeverity severity, std::string message)
 	tm *ltm = localtime(&now);
 	log << '[' << ltm->tm_hour << ':' << ltm->tm_min << ':' << ltm->tm_sec << "]  ";
 
-	log << m_loggerName << ": ";
+	log << m_loggerName;
+	if (m_printLogSeverity)
+	{
+		log << "[" << Utilities::CLoggerUtilities::NameOfSeverity(severity) << "] :  ";
+	}
+
 	log << message << std::endl;
 
 	this->Flush(log.str());

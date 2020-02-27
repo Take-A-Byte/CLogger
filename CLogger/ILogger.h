@@ -3,6 +3,7 @@
 
 namespace Logger
 {
+	///The numbers should strictly be serial in this class
 	enum CLoggerAPI LogSeverity
 	{
 		Trace = 0,

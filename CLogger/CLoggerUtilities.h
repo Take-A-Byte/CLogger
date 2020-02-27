@@ -1,4 +1,7 @@
 #pragma once 
+#include "ILogger.h"
+
+#define nameof(name) #name
 
 namespace Logger
 {
@@ -7,7 +10,7 @@ namespace Logger
 		class CLoggerUtilities
 		{
 		public:
-			static std::string 
+			static std::string NameOfSeverity(LogSeverity severity);
 		};
 	}
 }
