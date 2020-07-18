@@ -21,7 +21,37 @@ void CLoggerBase::set_printLogSeverity(bool printLogSeverity)
 	m_printLogSeverity = printLogSeverity;
 }
 
-void CLoggerBase::Log(LogSeverity severity, std::string message)
+void Logger::CLoggerBase::Trace(std::string message)
+{
+	log(LogSeverity::Trace, message);
+}
+
+void Logger::CLoggerBase::Debug(std::string message)
+{
+	log(LogSeverity::Debug, message);
+}
+
+void Logger::CLoggerBase::Info(std::string message)
+{
+	log(LogSeverity::Info, message);
+}
+
+void Logger::CLoggerBase::Warn(std::string message)
+{
+	log(LogSeverity::Warn, message);
+}
+
+void Logger::CLoggerBase::Error(std::string message)
+{
+	log(LogSeverity::Error, message);
+}
+
+void Logger::CLoggerBase::Critical(std::string message)
+{
+	log(LogSeverity::Critical, message);
+}
+
+void CLoggerBase::log(LogSeverity severity, std::string message)
 {
 	if (severity < m_baseSeverity)	return;
 

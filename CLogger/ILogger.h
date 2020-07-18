@@ -21,7 +21,12 @@ namespace Logger
 
 		virtual void set_SeverityLevel(LogSeverity severity) = 0;
 		virtual void set_printLogSeverity(bool printLogSeverity) = 0;
-		virtual void Log(LogSeverity severity, std::string message) = 0;
+		virtual void Trace(std::string message) = 0;
+		virtual void Debug(std::string message) = 0;
+		virtual void Info(std::string message) = 0;
+		virtual void Warn(std::string message) = 0;
+		virtual void Error(std::string message) = 0;
+		virtual void Critical(std::string message) = 0;
 
 		virtual void Flush(std::string logMessage) = 0;
 	};
