@@ -28,6 +28,7 @@ namespace Logger
 		virtual void Error(std::string message) = 0;
 		virtual void Critical(std::string message) = 0;
 
+	private:
 		virtual void Flush(std::string logMessage) = 0;
 	};
 }
