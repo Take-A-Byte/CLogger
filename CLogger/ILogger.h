@@ -21,12 +21,21 @@ namespace Logger
 
 		virtual void set_SeverityLevel(LogSeverity severity) = 0;
 		virtual void set_printLogSeverity(bool printLogSeverity) = 0;
+
 		virtual void Trace(std::string message) = 0;
 		virtual void Debug(std::string message) = 0;
 		virtual void Info(std::string message) = 0;
 		virtual void Warn(std::string message) = 0;
 		virtual void Error(std::string message) = 0;
 		virtual void Critical(std::string message) = 0;
+
+		virtual void set_ManualFlush(bool on) = 0;
+
+		/*
+			This function will flush all the accumulated logs if in manual flush mode.
+			If ManualFlush mode is off, this function will not perform any action.
+		*/
+		virtual void ForceFlush() = 0;
 
 	private:
 		virtual void Flush(std::string logMessage) = 0;

@@ -15,6 +15,8 @@ namespace Logger
 			* savePath = the path where the log file will be saved. 
 						 By default, the log file will be saved in the "Log" folder created in
 						 the folder where the program is ran; with the name of logger
+			*
+			* NOTE: by default manual flush will be off.
 		*/
 		static ILogger* CreateFileLogger(std::string loggerName, LogSeverity loggerSeverity = LogSeverity::Trace, std::string savePath = "./Log");
 
@@ -22,6 +24,8 @@ namespace Logger
 			This function will create an object of console logger.
 			params:
 			* severity = it is the least severity of log that would be printed by this logger
+			*
+			* NOTE: by default manual flush will be off.
 		*/
 		static ILogger* CreateConsoleLogger(std::string loggerName, LogSeverity loggerSeverity = LogSeverity::Trace);
 

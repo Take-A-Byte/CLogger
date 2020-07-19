@@ -9,6 +9,7 @@ CLoggerBase::CLoggerBase(std::string loggerName, LogSeverity severity)
 {
 	m_loggerName = loggerName;
 	m_baseSeverity = severity;
+	m_manualFlush = false;
 }
 
 void CLoggerBase::set_SeverityLevel(LogSeverity severity)
@@ -21,34 +22,52 @@ void CLoggerBase::set_printLogSeverity(bool printLogSeverity)
 	m_printLogSeverity = printLogSeverity;
 }
 
-void Logger::CLoggerBase::Trace(std::string message)
+void CLoggerBase::Trace(std::string message)
 {
 	log(LogSeverity::Trace, message);
 }
 
-void Logger::CLoggerBase::Debug(std::string message)
+void CLoggerBase::Debug(std::string message)
 {
 	log(LogSeverity::Debug, message);
 }
 
-void Logger::CLoggerBase::Info(std::string message)
+void CLoggerBase::Info(std::string message)
 {
 	log(LogSeverity::Info, message);
 }
 
-void Logger::CLoggerBase::Warn(std::string message)
+void CLoggerBase::Warn(std::string message)
 {
 	log(LogSeverity::Warn, message);
 }
 
-void Logger::CLoggerBase::Error(std::string message)
+void CLoggerBase::Error(std::string message)
 {
 	log(LogSeverity::Error, message);
 }
 
-void Logger::CLoggerBase::Critical(std::string message)
+void CLoggerBase::Critical(std::string message)
 {
 	log(LogSeverity::Critical, message);
+}
+
+void CLoggerBase::set_ManualFlush(bool on)
+{
+	m_manualFlush = on;
+}
+
+void CLoggerBase::ForceFlush()
+{
+	if (m_manualFlush)
+	{
+		for each (std::string logMessage in m_unFlushedLogs)
+		{
+			this->Flush(logMessage);
+		}
+
+		m_unFlushedLogs.clear();
+	}
 }
 
 void CLoggerBase::log(LogSeverity severity, std::string message)
@@ -69,7 +88,13 @@ void CLoggerBase::log(LogSeverity severity, std::string message)
 	}
 
 	log << message << std::endl;
-
-	this->Flush(log.str());
+	if (m_manualFlush)
+	{
+		m_unFlushedLogs.push_back(log.str());
+	}
+	else
+	{
+		this->Flush(log.str());
+	}
 }
 
