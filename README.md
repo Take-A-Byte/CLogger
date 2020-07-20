@@ -1,6 +1,7 @@
 # CLogger
 logger library for C++
 - has file logger
+- has a console logger
 
 ## Log Severity
 - ***Trace*** = 0 
