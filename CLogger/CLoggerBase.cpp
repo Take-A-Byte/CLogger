@@ -61,6 +61,7 @@ void CLoggerBase::ForceFlush()
 {
 	if (m_manualFlush)
 	{
+		std::lock_guard<std::mutex> lock(m_unFlushedLogs_Mutex);
 		for each (std::string logMessage in m_unFlushedLogs)
 		{
 			this->Flush(logMessage);
@@ -90,6 +91,7 @@ void CLoggerBase::log(LogSeverity severity, std::string message)
 	log << message << std::endl;
 	if (m_manualFlush)
 	{
+		std::lock_guard<std::mutex> lock(m_unFlushedLogs_Mutex);
 		m_unFlushedLogs.push_back(log.str());
 	}
 	else

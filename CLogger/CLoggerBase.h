@@ -1,6 +1,7 @@
 #pragma once
 #include "ILogger.h"
 #include <vector>
+#include <mutex>
 
 namespace Logger
 {
@@ -12,6 +13,7 @@ namespace Logger
 		bool m_printLogSeverity;
 		bool m_manualFlush;
 
+		std::mutex m_unFlushedLogs_Mutex;
 		std::vector<std::string> m_unFlushedLogs;
 
 	public:
