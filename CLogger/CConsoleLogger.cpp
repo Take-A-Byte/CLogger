@@ -16,5 +16,5 @@ CConsoleLogger::~CConsoleLogger()
 
 void CConsoleLogger::Flush(std::string logMessage)
 {
-	std::cout << logMessage << '\n';
+	std::cout << logMessage << std::endl;
 }
