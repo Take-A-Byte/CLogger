@@ -6,11 +6,6 @@
 
 using namespace Logger;
 
-ILogger * Logger::CLoggerFactory::CreateConsoleLogger(std::string loggerName, LogSeverity loggerSeverity)
-{
-	return new CConsoleLogger(loggerName, loggerSeverity);
-}
-
 CLoggerFactory::CLoggerFactory()
 {
 }
@@ -20,7 +15,26 @@ CLoggerFactory::~CLoggerFactory()
 {
 }
 
-ILogger* CLoggerFactory::CreateFileLogger(std::string loggerName, LogSeverity loggerSeverity, std::string savePath)
+ILogger* CLoggerFactory::CreateFileLogger(
+	std::string loggerName,
+	bool printLogSeverity,
+	LogSeverity loggerSeverity,
+	std::string savePath)
 {
-	return new CFileLogger(loggerName, loggerSeverity, savePath);
+	CFileLogger* newLogger = new CFileLogger(loggerName, loggerSeverity, savePath);
+	newLogger->set_printLogSeverity(true);
+
+	return newLogger;
 }
+
+ILogger* Logger::CLoggerFactory::CreateConsoleLogger(
+	std::string loggerName,
+	bool printLogSeverity,
+	LogSeverity loggerSeverity)
+{
+	CConsoleLogger* newLogger = new CConsoleLogger(loggerName, loggerSeverity);
+	newLogger->set_printLogSeverity(true);
+
+	return newLogger;
+}
+

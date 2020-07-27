@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <iostream>
+#include <Windows.h>
 
 #include "CConsoleLogger.h"
 
